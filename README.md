@@ -19,24 +19,22 @@ This script automatically shuts down your Linux system every day at a specific t
 1. Files
 ## 📁 File Structure
 
-/home/YOUR_USERNAME/sys_file/daily_autoshutdown/ 
-├── daily_autoshutdown.sh # Main script 
-├── shutdown.log # Log file (auto-created) 
-└── alert.wav # Sound played before popup
+- /home/YOUR_USERNAME/sys_file/daily_autoshutdown/ 
+- ├── daily_autoshutdown.sh # Main script 
+- ├── shutdown.log # Log file (auto-created) 
+- └── alert.wav # Sound played before popup
 
 ---
 
 ## 🛠 Setup Instructions
 
-### 1. Install Requirements
-
+Install Requirements
 Make sure `kdialog` and `paplay` are installed:
-
 ```bash
 sudo dnf install kdialog pulseaudio-utils
 
 2. Place Files
-Put the script and sound file in:
+- Put the Main script and sound file in:
 /home/YOUR_USERNAME/sys_file/daily_autoshutdown/
 Make the script executable:
 chmod +x /home/YOUR_USERNAME/sys_file/daily_autoshutdown/daily_autoshutdown.sh
@@ -46,11 +44,13 @@ chmod +x /home/YOUR_USERNAME/sys_file/daily_autoshutdown/daily_autoshutdown.sh
 
 
 ####################################################
-#####🚀 Auto-Start at Login (Optional)
+
+🚀 Auto-Start at Login (Optional)
 To run the script automatically at login using systemd:
 
 Create a user service:
 # ~/.config/systemd/user/daily_autoshutdown.service
+Then add below & save.
 
 [Unit]
 Description=Daily Auto Shutdown Script
@@ -68,11 +68,11 @@ WantedBy=default.target
 
 ##################################################################
 
-Start or Enable the service:
+Finally Start or Enable the service:
 systemctl --user daemon-reload
 systemctl --user enable --now daily_autoshutdown.service
 
-Stop or disable if needed
+##Stop or disable if needed
 systemctl --user stop daily_autoshutdown.service
 systemctl --user disable daily_autoshutdown.service
 
